@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/presents
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy
+  liquibase:
+    change-log: classpath:/db/changelog-master.xml
+    contexts: '!test'
+  jackson:
+    serialization.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+    deserialization.READ_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+
+server:
+  servlet:
+    session:
+      timeout: 1800
+    context-path: /api
