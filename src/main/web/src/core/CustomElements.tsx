@@ -4,9 +4,9 @@ import {Icon} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Button, {ButtonProps} from "@material-ui/core/Button";
 
-const RedirectWithIcon: React.FC<IconLink> = ({to, icon, history}) => {
+const RedirectWithIcon: React.FC<IconLink> = ({to, icon, history, color}) => {
     const redirect = () => history.push(to);
-    return <IconButton onClick={redirect}>
+    return <IconButton onClick={redirect} {...{color}}>
         <Icon>{icon}</Icon>
     </IconButton>
 };
