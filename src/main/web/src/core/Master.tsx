@@ -24,7 +24,7 @@ const Master: React.FC<UserInterface> = ({user}) => {
             </Grid>
             <Grid xs={3}></Grid>
             <Grid xs={9}>
-                <Content {...{user}}/>
+                <Content/>
             </Grid>
         </Grid>
     </div>

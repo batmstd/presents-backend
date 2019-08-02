@@ -4,9 +4,9 @@ import {UserInterface, UserModel} from "../../core/UserModel";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const Auth: React.FC<UserInterface> = ({user}) => {
+const Auth: React.FC = () => {
     return (<>
-        {user ? <SignIn/> : <SignUp/>}
+        {<SignIn/>}
     </>)
 };
 
