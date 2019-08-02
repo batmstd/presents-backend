@@ -16,7 +16,7 @@ const Master: React.FC<UserInterface> = ({user}) => {
                 <AppBar position="static" color="primary">
                     <Toolbar>
                         <Typography variant="h5" color="inherit" className={classes.title}>
-                            <Link to={"/"}>Home</Link>
+                            <Link color="inherit" to={"/"}>Home</Link>
                         </Typography>
                         <IconLink className={classes.menuButton} color="inherit" icon={"account_circle"} to={"/auth"}/>
                     </Toolbar>
