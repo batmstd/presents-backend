@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {createStyles, Theme, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import {Link} from "../../core/CustomElements";
 
@@ -17,7 +16,7 @@ const SignIn: React.FC = () => {
         setForm(oldValues => ({...oldValues, [id]: value}))
     }
 
-    return (<Grid container xs={6}>
+    return (<>
         <Typography variant={"h5"}>Авторизация</Typography>
         <form className={classes.container} autoComplete="off">
             <TextField
@@ -27,7 +26,7 @@ const SignIn: React.FC = () => {
                 onChange={handleChange}
                 margin="normal"
                 variant="outlined"
-                className={classes.textField}
+                className={classes.field}
                 fullWidth
             />
             <TextField
@@ -38,15 +37,15 @@ const SignIn: React.FC = () => {
                 onChange={handleChange}
                 margin="normal"
                 variant="outlined"
-                className={classes.textField}
+                className={classes.field}
                 fullWidth
             />
-            <Button className={classes.textField} color={"primary"} variant={"contained"}>Войти</Button>
-            <Button className={classes.textField}>Забыли пароль?</Button>
-            <Link to={"/register"} className={classes.textField}>Зарегистрироваться</Link>
+            <Button className={classes.field} color={"primary"} variant={"contained"}>Войти</Button>
+            <Button className={classes.field}>Забыли пароль?</Button>
+            <Link to={"/register"} className={classes.field}>Зарегистрироваться</Link>
         </form>
 
-    </Grid>)
+    </>)
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexWrap: 'wrap',
         },
-        textField: {
+        field: {
             marginLeft: theme.spacing(1),
             marginRight: theme.spacing(1),
         }
