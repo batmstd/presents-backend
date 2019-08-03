@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import {createStyles, Theme, Typography} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
-import {Link} from "../../core/CustomElements";
+import {Link} from "../../elements/CustomElements";
+import {InputField, PasswordField} from "../../elements/CustomInputs";
 
 const SignIn: React.FC = () => {
     const classes = useStyles();
-    const [form, setForm] = useState<{ login: string, password: string }>({
-        login: "",
+    const [form, setForm] = useState<{ email: string, password: string }>({
+        email: "",
         password: ""
     });
 
@@ -18,28 +18,9 @@ const SignIn: React.FC = () => {
 
     return (<>
         <Typography variant={"h5"}>Авторизация</Typography>
-        <form className={classes.container} autoComplete="off">
-            <TextField
-                id="login"
-                label="Логин"
-                value={form.login}
-                onChange={handleChange}
-                margin="normal"
-                variant="outlined"
-                className={classes.field}
-                fullWidth
-            />
-            <TextField
-                id="password"
-                type="password"
-                label="Пароль"
-                value={form.password}
-                onChange={handleChange}
-                margin="normal"
-                variant="outlined"
-                className={classes.field}
-                fullWidth
-            />
+        <form className={classes.container}>
+            <InputField id={"email"} label={"Email"} value={form.email} onChange={handleChange} type="email"/>
+            <PasswordField id={"password"} label={"Пароль"} value={form.password} onChange={handleChange}/>
             <Button className={classes.field} color={"primary"} variant={"contained"}>Войти</Button>
             <Button className={classes.field}>Забыли пароль?</Button>
             <Link to={"/register"} className={classes.field}>Зарегистрироваться</Link>
