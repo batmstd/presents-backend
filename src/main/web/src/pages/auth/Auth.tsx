@@ -5,11 +5,15 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import useMediaQuery from "@material-ui/core/useMediaQuery/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
+import {Route, Switch} from "react-router";
 
 const Auth: React.FC = () => {
     const matches = useMediaQuery('(min-width:600px)');
     return (<Grid item xs={matches ? 6 : 12}>
-        {<SignIn/>}
+        <Switch>
+            <Route path="/register" component={() => <SignUp/>}/>
+            <Route path="/" component={() => <SignIn/>}/>
+        </Switch>
     </Grid>)
 };
 

@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import {createStyles, Theme, Typography} from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import useMediaQuery from "@material-ui/core/useMediaQuery/useMediaQuery";
 import {InputField, PasswordField} from "../../elements/CustomInputs";
 
 interface RegisterUser {
@@ -26,8 +24,7 @@ const SignUp: React.FC = () => {
         setForm(oldValues => ({...oldValues, [id]: value}))
     }
 
-    const matches = useMediaQuery('(min-width:600px)');
-    return (<Grid item xs={matches ? 6 : 12}>
+    return (<>
         <Typography variant={"h5"}>Регистрация</Typography>
         <form className={classes.container} autoComplete="off">
             <InputField id={"name"} label={"Имя"} value={form.name} onChange={handleChange}/>
@@ -37,7 +34,7 @@ const SignUp: React.FC = () => {
             <Button className={classes.field} color={"primary"} variant={"contained"}>Зарегистрироваться</Button>
         </form>
 
-    </Grid>)
+    </>)
 };
 
 const useStyles = makeStyles((theme: Theme) =>

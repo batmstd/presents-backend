@@ -8,6 +8,7 @@ import Content from "./Content";
 import {IconLink, Link} from "../elements/CustomElements";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Auth from "../pages/auth/Auth";
 
 const Master: React.FC<UserInterface> = ({user}) => {
     const classes = useStyles();
@@ -27,7 +28,7 @@ const Master: React.FC<UserInterface> = ({user}) => {
             </Grid>
             {matches && <Grid item xs={3}></Grid>}
             <Grid item xs={matches ? 9 : 12}>
-                <Content/>
+                {user ? <Content/> : <Auth/>}
             </Grid>
         </Grid>
     </div>
