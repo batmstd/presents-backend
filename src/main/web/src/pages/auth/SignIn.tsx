@@ -3,6 +3,7 @@ import {createStyles, Theme, Typography} from "@material-ui/core";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Button from "@material-ui/core/Button";
 import {Link} from "../../elements/CustomElements";
+import axios from 'axios';
 import {InputField, PasswordField} from "../../elements/CustomInputs";
 
 const SignIn: React.FC = () => {
@@ -16,12 +17,27 @@ const SignIn: React.FC = () => {
         setForm(oldValues => ({...oldValues, [id]: value}))
     }
 
+    function signIn(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        const {email, password} = form;
+        console.log(email, password);
+        if (email === "" || password === "") return;
+        axios({
+            method: 'POST',
+            url: '/login/user',
+            auth: {
+                username: email,
+                password
+            }
+        }).then((res) => console.log(res.data), err => console.log(err));
+    }
+
     return (<>
         <Typography variant={"h5"}>Авторизация</Typography>
-        <form className={classes.container}>
+        <form className={classes.container} onSubmit={signIn}>
             <InputField id={"email"} label={"Email"} value={form.email} onChange={handleChange} type="email"/>
             <PasswordField id={"password"} label={"Пароль"} value={form.password} onChange={handleChange}/>
-            <Button className={classes.field} color={"primary"} variant={"contained"}>Войти</Button>
+            <Button type="submit" className={classes.field} color={"primary"} variant={"contained"}>Войти</Button>
             <Button className={classes.field}>Забыли пароль?</Button>
             <Link to={"/register"} className={classes.field}>Зарегистрироваться</Link>
         </form>
