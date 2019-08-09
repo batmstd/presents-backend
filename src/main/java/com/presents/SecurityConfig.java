@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
+        http.antMatcher("/gui/**")
                 .csrf().disable()
                 .formLogin().disable()
                 .anonymous().disable()
@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/gui/logout")
                 .logoutSuccessUrl("/")
                 .deleteCookies("SSOSESSIONID")
                 .clearAuthentication(true)
@@ -64,29 +64,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .maximumSessions(10)
                 .sessionRegistry(sessionRegistry())
                 .expiredSessionStrategy(expiredSessionStrategy());
-
-//        http.antMatcher("/gui/**");
-//        http.csrf()
-//                .disable();
-//        http.formLogin()
-//                .disable();
-//        http.anonymous()
-//                .disable();
-//        http.httpBasic()
-//                .authenticationEntryPoint(authenticationEntryPoint());
-//        http.authorizeRequests()
-//                .anyRequest()
-//                .authenticated();
-//        http.logout()
-//                .logoutUrl("/gui/logout")
-//                .logoutSuccessUrl("/")
-//                .deleteCookies("SSOSESSIONID")
-//                .clearAuthentication(true)
-//                .invalidateHttpSession(true);
-//        http.sessionManagement()
-//                .maximumSessions(1)
-//                .sessionRegistry(sessionRegistry())
-//                .expiredSessionStrategy(expiredSessionStrategy());
     }
 
     @Bean("guiUserDetailsManager")
