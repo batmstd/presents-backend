@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
         if (email === "" || password === "") return;
         axios({
             method: 'POST',
-            url: '/login/user',
+            url: '/gui/login/user',
             auth: {
                 username: email,
                 password
