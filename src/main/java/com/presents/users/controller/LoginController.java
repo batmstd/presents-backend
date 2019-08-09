@@ -17,7 +17,7 @@ import java.security.Principal;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/gui/login")
 public class LoginController {
 
     private final UserDetailsManager userDetailsManager;
